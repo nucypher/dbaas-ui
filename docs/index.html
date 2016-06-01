@@ -76,7 +76,7 @@ body {
 						</div>
 
 						<div class="btn-toolbar dashhead-toolbar">
-							<button type="button" class="btn btn-lg btn-pill btn-primary"><span class="icon icon-database"> Launch instance</span></button>
+							<button id="stripeButton" type="button" class="btn btn-lg btn-pill btn-primary"><span class="icon icon-database"> Launch instance</span></button>
 						</div>
 					</div>
 
@@ -145,6 +145,34 @@ body {
 		<script>
 // execute/clear BS loaders for docs
 $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+		</script>
+		<script src="https://checkout.stripe.com/checkout.js"></script>
+		<script>
+			var handler = StripeCheckout.configure({
+				key: 'pk_test_a5PvmhImTHCrmhz852eOWS6l',
+				image: '../assets/img/zerodb.svg',
+				locale: 'auto',
+				token: function(token) {
+					// You can access the token ID with `token.id`.
+					// Get the token ID to your server-side code for use.
+				}
+			});
+
+			$('#stripeButton').on('click', function(e) {
+				// Open Checkout with further options:
+				handler.open({
+					name: 'ZeroDB, Inc.',
+					description: '1 database instance',
+					zipCode: true,
+					amount: 200
+				});
+				e.preventDefault();
+			});
+
+			// Close Checkout on page navigation:
+			$(window).on('popstate', function() {
+				handler.close();
+			});
 		</script>
 	</body>
 </html>
