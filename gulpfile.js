@@ -47,7 +47,7 @@ gulp.task('docs', ['server'], function () {
 
 gulp.task('server', function () {
   connect.server({
-    root: 'docs',
+    root: 'root',
     port: 9001,
     livereload: true
   })
