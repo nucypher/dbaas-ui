@@ -76,7 +76,7 @@ body {
 						</div>
 
 						<div class="btn-toolbar dashhead-toolbar">
-							<button id="stripeButton" type="button" class="btn btn-lg btn-pill btn-primary"><span class="icon icon-database"> Launch instance</span></button>
+							<button type="button" class="btn btn-lg btn-pill btn-primary" data-toggle="modal" data-target="#instanceModal"><span class="icon icon-database"> Launch instance</span></button>
 						</div>
 					</div>
 
@@ -118,23 +118,72 @@ body {
 			</div>
 		</div>
 
-		<div id="docsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div id="instanceModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="instanceModalLabel">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Example modal</h4>
+						<h4 class="modal-title" id="instanceModalLabel">Choose your instance</h4>
+						<p>All instances are t2.large running on AWS</p>
 					</div>
 					<div class="modal-body">
-						<p>You're looking at an example modal in the dashboard theme.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Cool, got it!</button>
+						<div class="row statcards">
+							<div class="col-sm-12 col-lg-4 m-b">
+								<div class="statcard statcard-success">
+									<div class="p-a">
+										<span class="statcard-desc">2GB</span>
+										<h2 class="statcard-number">
+											$25
+										</h2>
+										<span class="statcard-desc">per month</span>
+										<div class="btn-group btn-group-justified" role="group">
+											<div class="btn-group" role="group">
+												<button id="stripeButton2GB" type="button" class="btn btn-default" data-dismiss="modal">Buy</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 m-b">
+								<div class="statcard statcard-danger">
+									<div class="p-a">
+										<span class="statcard-desc">4GB</span>
+										<h2 class="statcard-number">
+											$40
+										</h2>
+										<span class="statcard-desc">per month</span>
+										<div class="btn-group btn-group-justified" role="group">
+											<div class="btn-group" role="group">
+												<button id="stripeButton4GB" type="button" class="btn btn-default" data-dismiss="modal">Buy</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 col-lg-4 m-b">
+								<div class="statcard statcard-info">
+									<div class="p-a">
+										<span class="statcard-desc">8GB</span>
+										<h2 class="statcard-number">
+											$70
+										</h2>
+										<span class="statcard-desc">per month</span>
+										<div class="btn-group btn-group-justified" role="group">
+											<div class="btn-group" role="group">
+												<button id="stripeButton8GB" type="button" class="btn btn-default" data-dismiss="modal">Buy</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 
 		<script src="assets/js/jquery.min.js"></script>
@@ -158,17 +207,39 @@ $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window
 				}
 			});
 
-			$('#stripeButton').on('click', function(e) {
+			$('#stripeButton2GB').on('click', function(e) {
 				// Open Checkout with further options:
 				handler.open({
 					name: 'ZeroDB, Inc.',
-					description: '1 database instance',
+					description: '2GB',
 					zipCode: true,
-					amount: 200
+					amount: 2500
 				});
 				e.preventDefault();
 			});
 
+			$('#stripeButton4GB').on('click', function(e) {
+				// Open Checkout with further options:
+				handler.open({
+					name: 'ZeroDB, Inc.',
+					description: '4GB',
+					zipCode: true,
+					amount: 4000
+				});
+				e.preventDefault();
+			});
+
+
+			$('#stripeButton8GB').on('click', function(e) {
+				// Open Checkout with further options:
+				handler.open({
+					name: 'ZeroDB, Inc.',
+					description: '8GB',
+					zipCode: true,
+					amount: 7000
+				});
+				e.preventDefault();
+			});
 			// Close Checkout on page navigation:
 			$(window).on('popstate', function() {
 				handler.close();
