@@ -137,11 +137,18 @@ body {
 											$25
 										</h2>
 										<span class="statcard-desc">per month</span>
-										<div class="btn-group btn-group-justified" role="group">
-											<div class="btn-group" role="group">
-												<button id="stripeButton2GB" type="button" class="btn btn-default" data-dismiss="modal">Buy</button>
-											</div>
-										</div>
+										<form action="/create_2gb_instance" method="POST" data-dismiss="modal">
+										  <script
+										    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+										    data-key="pk_test_a5PvmhImTHCrmhz852eOWS6l"
+										    data-amount="2500"
+										    data-name="ZeroDB, Inc."
+										    data-description="2GB subscription"
+										    data-image="../assets/img/zerodb.svg"
+										    data-locale="auto"
+										    data-zip-code="true">
+										  </script>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -153,11 +160,18 @@ body {
 											$40
 										</h2>
 										<span class="statcard-desc">per month</span>
-										<div class="btn-group btn-group-justified" role="group">
-											<div class="btn-group" role="group">
-												<button id="stripeButton4GB" type="button" class="btn btn-default" data-dismiss="modal">Buy</button>
-											</div>
-										</div>
+										<form action="/create_4gb_instance" method="POST" data-dismiss="modal">
+										  <script
+										    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+										    data-key="pk_test_a5PvmhImTHCrmhz852eOWS6l"
+										    data-amount="4000"
+										    data-name="ZeroDB, Inc."
+										    data-description="4GB subscription"
+										    data-image="../assets/img/zerodb.svg"
+										    data-locale="auto"
+										    data-zip-code="true">
+										  </script>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -169,11 +183,18 @@ body {
 											$70
 										</h2>
 										<span class="statcard-desc">per month</span>
-										<div class="btn-group btn-group-justified" role="group">
-											<div class="btn-group" role="group">
-												<button id="stripeButton8GB" type="button" class="btn btn-default" data-dismiss="modal">Buy</button>
-											</div>
-										</div>
+										<form action="/create_8gb_instance" method="POST" data-dismiss="modal">
+										  <script
+										    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+										    data-key="pk_test_a5PvmhImTHCrmhz852eOWS6l"
+										    data-amount="7000"
+										    data-name="ZeroDB, Inc."
+										    data-description="8GB subscription"
+										    data-image="../assets/img/zerodb.svg"
+										    data-locale="auto"
+										    data-zip-code="true">
+										  </script>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -194,56 +215,6 @@ body {
 		<script>
 // execute/clear BS loaders for docs
 $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
-		</script>
-		<script src="https://checkout.stripe.com/checkout.js"></script>
-		<script>
-			var handler = StripeCheckout.configure({
-				key: 'pk_test_a5PvmhImTHCrmhz852eOWS6l',
-				image: '../assets/img/zerodb.svg',
-				locale: 'auto',
-				token: function(token) {
-					// You can access the token ID with `token.id`.
-					// Get the token ID to your server-side code for use.
-				}
-			});
-
-			$('#stripeButton2GB').on('click', function(e) {
-				// Open Checkout with further options:
-				handler.open({
-					name: 'ZeroDB, Inc.',
-					description: '2GB',
-					zipCode: true,
-					amount: 2500
-				});
-				e.preventDefault();
-			});
-
-			$('#stripeButton4GB').on('click', function(e) {
-				// Open Checkout with further options:
-				handler.open({
-					name: 'ZeroDB, Inc.',
-					description: '4GB',
-					zipCode: true,
-					amount: 4000
-				});
-				e.preventDefault();
-			});
-
-
-			$('#stripeButton8GB').on('click', function(e) {
-				// Open Checkout with further options:
-				handler.open({
-					name: 'ZeroDB, Inc.',
-					description: '8GB',
-					zipCode: true,
-					amount: 7000
-				});
-				e.preventDefault();
-			});
-			// Close Checkout on page navigation:
-			$(window).on('popstate', function() {
-				handler.close();
-			});
 		</script>
 	</body>
 </html>
